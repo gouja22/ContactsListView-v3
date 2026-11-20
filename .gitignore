@@ -1,7 +1,11 @@
 .gradle/
 .idea/
-local.properties
+.kotlin/
 build/
 app/build/
 *.iml
-captures/
+.DS_Store
+
+# Secrets : contient MAPS_API_KEY — ne jamais publier
+local.properties
+secrets.properties

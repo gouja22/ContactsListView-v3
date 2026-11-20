@@ -4,8 +4,8 @@ import android.os.Parcel
 import android.os.Parcelable
 
 /**
- * Modèle de données représentant un contact.
- * Implémente Parcelable pour être transmis entre activités via Intent.
+ * Modèle Contact — V3 : ajout de latitude et longitude pour Google Maps.
+ * Implémente Parcelable pour la transmission via Bundle entre fragments.
  */
 data class Contact(
     val id: Int,
@@ -13,16 +13,20 @@ data class Contact(
     var prenom: String,
     var telephone: String,
     var email: String,
-    var photoUri: String? = null  // URI de la photo (null = photo par défaut)
+    var photoUri: String? = null,
+    var latitude: Double? = null,
+    var longitude: Double? = null
 ) : Parcelable {
 
     constructor(parcel: Parcel) : this(
-        id       = parcel.readInt(),
-        nom      = parcel.readString() ?: "",
-        prenom   = parcel.readString() ?: "",
-        telephone= parcel.readString() ?: "",
-        email    = parcel.readString() ?: "",
-        photoUri = parcel.readString()
+        id        = parcel.readInt(),
+        nom       = parcel.readString() ?: "",
+        prenom    = parcel.readString() ?: "",
+        telephone = parcel.readString() ?: "",
+        email     = parcel.readString() ?: "",
+        photoUri  = parcel.readString(),
+        latitude  = parcel.readValue(Double::class.java.classLoader) as? Double,
+        longitude = parcel.readValue(Double::class.java.classLoader) as? Double
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -32,6 +36,8 @@ data class Contact(
         parcel.writeString(telephone)
         parcel.writeString(email)
         parcel.writeString(photoUri)
+        parcel.writeValue(latitude)
+        parcel.writeValue(longitude)
     }
 
     override fun describeContents(): Int = 0

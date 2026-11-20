@@ -1,31 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    activity_main.xml
-    Layout de MainActivity : titre + ListView des contacts
--->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- MainActivity : hôte unique des fragments -->
+<androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragmentContainer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <!-- Barre de titre de l'appli (simple TextView) -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:padding="16dp"
-        android:text="@string/app_name"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <!-- Liste des contacts occupe tout l'espace restant -->
-    <ListView
-        android:id="@+id/lvContacts"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:divider="@android:color/darker_gray"
-        android:dividerHeight="0.5dp" />
-
-</LinearLayout>
+    android:layout_height="match_parent" />
